@@ -1,6 +1,20 @@
+# Core dependencies
 langchain==0.0.284
+langchain-classic
+langchain-community
+langchain-core
+langchain-google-genai
+langchain-huggingface
+
+# Embeddings and vector search
+faiss-cpu==1.8.0
+sentence-transformers
+
+# Utility
 python-dotenv==1.0.0
 streamlit==1.22.0
 tiktoken>=0.7.0
-faiss-cpu==1.8.0
 protobuf~=3.19.0
+
+# For data validation and newer langchain modules
+pydantic
