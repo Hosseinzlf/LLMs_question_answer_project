@@ -78,7 +78,6 @@ Open the provided local URL in your browser.
 ## 🗝️ Security Note
 
 - Your API key should **never** be hard-coded in scripts. Use environment variables or `.env`.
-- The vector store uses Pickle format. Only use `allow_dangerous_deserialization=True` if you completely trust the `.pkl` files you load.
 
 ---
 
