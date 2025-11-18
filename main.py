@@ -46,7 +46,7 @@ def get_qa_chain():
     retriever = vector_db.as_retriever()
     prompt_template = """This context is from a CSV file that contains questions and answers. You are a helpful assistant that can answer questions about the context.
     try to answer the question based on the "response" part in the source document without changer it.
-    If you didn't find the answer in the documents just say "Appologize, and sayI don't know your answer" and don't try to manipulate or make an answer based on your assumptions
+    If you didn't find the answer in the documents just say "Appologize, and I don't know your answer" and don't try to manipulate or make an answer based on your assumptions
 
     CONTEXT: {context}
 
