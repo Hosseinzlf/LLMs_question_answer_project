@@ -88,11 +88,5 @@ Open the provided local URL in your browser.
 - [FAISS](https://github.com/facebookresearch/faiss)
 - [Streamlit](https://streamlit.io/)
 
----
-
-## Authors
-
-- Developed by Hossein Zolfaghari
-- For educational and hands-on LLM projects
 
 
