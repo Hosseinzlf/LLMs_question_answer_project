@@ -4,7 +4,7 @@ A professional, context-aware Question & Answer web application leveraging Large
 
 ---
 
-## 🚀 Features
+## Features
 
 - **LLM-Powered Q&A:** Answers questions based on your own FAQ database.
 - **Google Gemini & HuggingFace Instruct Embeddings:** Ensures high accuracy and robust language understanding.
