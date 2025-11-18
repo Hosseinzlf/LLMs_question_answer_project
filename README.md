@@ -84,7 +84,7 @@ Open the provided local URL in your browser.
 
 - [LangChain](https://python.langchain.com/)
 - [HuggingFace Embeddings](https://huggingface.co/)
-- [Google Gemini (Generative AI)](https://ai.google.dev/)
+- [Google Gemini](https://ai.google.dev/)
 - [FAISS](https://github.com/facebookresearch/faiss)
 - [Streamlit](https://streamlit.io/)
 
