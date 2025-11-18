@@ -78,15 +78,6 @@ Open the provided local URL in your browser.
 
 - Your API key should **never** be hard-coded in scripts. Use environment variables or `.env`.
 
----
-
-## Technologies Used
-
-- [LangChain](https://python.langchain.com/)
-- [HuggingFace Embeddings](https://huggingface.co/)
-- [Google Gemini](https://ai.google.dev/)
-- [FAISS](https://github.com/facebookresearch/faiss)
-- [Streamlit](https://streamlit.io/)
 
 
 
