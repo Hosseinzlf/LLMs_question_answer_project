@@ -1,4 +1,4 @@
-# GenAI FAQ assistant platform using LangChain with Google PaLM, FAISS vector store, and Streamlit UI for Education-Tech,
+# GenAI FAQ assistant platform for Education-Tech,
 
 A professional, context-aware Question & Answer web application leveraging state-of-the-art Large Language Models (LLMs) and vector search. Built using LangChain, HuggingFace embeddings, Google Gemini, FAISS, and Streamlit.
 
