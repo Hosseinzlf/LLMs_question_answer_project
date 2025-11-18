@@ -68,4 +68,4 @@ def get_qa_chain():
 
 if __name__ == "__main__":
     chain = get_qa_chain()
-    print(chain('do you provide an internship?'))
+    print(chain('Do you provide an internship?'))
