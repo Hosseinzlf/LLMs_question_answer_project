@@ -67,31 +67,30 @@ Open the provided local URL in your browser.
 
 ---
 
-## 📝 Example
+## Example
 
 - Enter your question in the input box.
 - The app provides the most contextually relevant answer based on your FAQ CSV.
 
 ---
 
-## 🗝️ Security Note
+## Security Note
 
 - Your API key should **never** be hard-coded in scripts. Use environment variables or `.env`.
 
 ---
 
-## 📚 Technologies Used
+## Technologies Used
 
 - [LangChain](https://python.langchain.com/)
 - [HuggingFace Embeddings](https://huggingface.co/)
 - [Google Gemini (Generative AI)](https://ai.google.dev/)
 - [FAISS](https://github.com/facebookresearch/faiss)
 - [Streamlit](https://streamlit.io/)
-- [python-dotenv](https://github.com/theskumar/python-dotenv)
 
 ---
 
-## 👨‍💻 Authors
+## Authors
 
 - Developed by Hossein Zolfaghari
 - For educational and hands-on LLM projects
