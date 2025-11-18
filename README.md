@@ -1,4 +1,4 @@
-# Zolfaghari QA Website
+# enAI FAQ Assistant Platform using LangChain with Google PaLM, FAISS Vector Store, and Streamlit UI for Education-Tech,
 
 A professional, context-aware Question & Answer web application leveraging state-of-the-art Large Language Models (LLMs) and vector search. Built using LangChain, HuggingFace embeddings, Google Gemini, FAISS, and Streamlit.
 
