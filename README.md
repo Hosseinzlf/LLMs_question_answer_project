@@ -14,7 +14,7 @@ A professional, context-aware Question & Answer web application leveraging Large
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 ### 1. Clone the Repository
 ```bash
