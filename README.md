@@ -44,7 +44,7 @@ You need a Google Generative AI API key.
 
 ---
 
-## 📁 Usage
+## Usage
 
 ### 1. **Prepare FAQ Data:**
 - Place your FAQ CSV in the project folder.
