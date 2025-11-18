@@ -19,7 +19,6 @@ A professional, context-aware Question & Answer web application leveraging Large
 ### 1. Clone the Repository
 ```bash
 git clone <repo-url>
-cd questionproject/LLMs_question_answer_project
 ```
 
 ### 2. Install Dependencies
@@ -48,12 +47,12 @@ You need a Google Generative AI API key.
 ## 📁 Usage
 
 ### 1. **Prepare FAQ Data:**
-- Place your FAQ CSV (e.g., `codebasics_faqs.csv`) in the project folder.
+- Place your FAQ CSV in the project folder.
 - The CSV should contain at least a `prompt` column (questions) and a `response` column (answers).
 
 ### 2. **Build Vector Database**
 
-Run (optional, only if you add/update the CSV):
+Run:
 ```bash
 python main.py
 ```
@@ -97,8 +96,4 @@ Open the provided local URL in your browser.
 - Developed by Hossein Zolfaghari
 - For educational and hands-on LLM projects
 
----
 
-## 📄 License
-
-This project is for educational purposes.
