@@ -44,9 +44,9 @@ def create_vector_db():
 def get_qa_chain():
     vector_db = FAISS.load_local(vectordb_file_path, instructor_embeddings, allow_dangerous_deserialization=True)
     retriever = vector_db.as_retriever()
-    prompt_template = """Given the following context and a question, generate an answer based on this context only.
-    In the answer try to provide as much text as possible from "response" section in the source document context without making much changes.
-    If the answer is not found in the context, kindly state "I don't know." Don't try to make up an answer.
+    prompt_template = """This context is from a CSV file that contains questions and answers. You are a helpful assistant that can answer questions about the context.
+    try to answer the question based on the "response" part in the source document without changer it.
+    If you didn't find the answer in the documents just say "Appologize, and sayI don't know your answer" and don't try to manipulate or make an answer based on your assumptions
 
     CONTEXT: {context}
 
