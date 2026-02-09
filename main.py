@@ -1,71 +1,51 @@
-from langchain_community.embeddings import HuggingFaceInstructEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain_community.document_loaders.csv_loader import CSVLoader
-from langchain_classic.prompts import PromptTemplate
-from langchain_classic.chains import RetrievalQA
-from dotenv import load_dotenv
-import os
-load_dotenv()
+"""CLI: build FAISS index or run a demo query."""
+import argparse
+import logging
+import sys
 
-from langchain_google_genai import ChatGoogleGenerativeAI
+from src.config import get_google_api_key
+from src.models import create_vector_db, get_qa_chain
 
-google_api_key = os.environ["GOOGLE_API_KEY"]
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash",api_key=google_api_key, temperature=0.5)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(levelname)s: %(message)s",
+)
+logger = logging.getLogger(__name__)
 
-vectordb_file_path = "faiss_index"
 
-instructor_embeddings = HuggingFaceInstructEmbeddings()
-
-def create_vector_db():
-    # Load CSV with Windows-1252 encoding (detected automatically)
-    # Fix for UnicodeDecodeError: Specify the correct encoding
-
-    loader = CSVLoader(
-        file_path='codebasics_faqs.csv', 
-        source_column='prompt',
-        encoding='windows-1252'  # Specify the correct encoding
+def main():
+    parser = argparse.ArgumentParser(description="FAQ RAG: build index or run a query.")
+    parser.add_argument(
+        "--build",
+        action="store_true",
+        help="Build/rebuild FAISS index from CSV (run this after updating the FAQ CSV).",
     )
-
-    # Load the data
-    data = loader.load()
-    print(f"Successfully loaded {len(data)} documents from CSV!")
-
-
-    '''
-    There are many embedding tools but some of them are not free.
-    In this project we use HuggingFaceIntructEmbedding.
-    Because it is free but good performing!
-    ''' 
-
-    vector_db = FAISS.from_documents(documents=data, embedding = instructor_embeddings)
-    vector_db.save_local(vectordb_file_path)
-
-
-def get_qa_chain():
-    vector_db = FAISS.load_local(vectordb_file_path, instructor_embeddings, allow_dangerous_deserialization=True)
-    retriever = vector_db.as_retriever()
-    prompt_template = """Given the following context and a question, generate an answer based on this context only.
-    In the answer try to provide as much text as possible from "response" section in the source document context without making much changes.
-    If the answer is not found in the context, kindly state "I don't know." Don't try to make up an answer.
-
-    CONTEXT: {context}
-
-    QUESTION: {question}"""
-    
-    PROMPT = PromptTemplate(
-    template=prompt_template, input_variables=["context", "question"]
+    parser.add_argument(
+        "--query",
+        default="Do you provide an internship?",
+        help="Question to ask (used when not using --build).",
     )
-    chain_type_kwargs = {"prompt": PROMPT}
-    chain = RetrievalQA.from_chain_type(
-            llm=llm,
-            chain_type = 'stuff',
-            retriever=retriever,
-            input_key='query',
-            return_source_documents=True,
-            chain_type_kwargs=chain_type_kwargs
-            )
-    return chain
+    args = parser.parse_args()
+
+    if args.build:
+        try:
+            get_google_api_key()  # fail fast if key missing
+            create_vector_db()
+            logger.info("Done. You can run the app or ask a query next.")
+        except (ValueError, FileNotFoundError) as e:
+            logger.error("%s", e)
+            sys.exit(1)
+        return
+
+    # Default: run one query
+    try:
+        chain = get_qa_chain()
+        out = chain.invoke(args.query)
+        print("Answer:", out["result"])
+    except (ValueError, FileNotFoundError) as e:
+        logger.error("%s", e)
+        sys.exit(1)
+
 
 if __name__ == "__main__":
-    chain = get_qa_chain()
-    print(chain('do you provide an internship?'))
+    main()

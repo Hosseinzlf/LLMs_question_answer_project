@@ -1,104 +1,116 @@
 # Zolfaghari QA Website
 
-A professional, context-aware Question & Answer web application leveraging state-of-the-art Large Language Models (LLMs) and vector search. Built using LangChain, HuggingFace embeddings, Google Gemini, FAISS, and Streamlit.
+A context-aware Q&A app over your FAQ data using LangChain, HuggingFace embeddings, Google Gemini, FAISS, and Streamlit.
 
 ---
 
-## 🚀 Features
+## Features
 
-- **LLM-Powered Q&A:** Answers questions based on your own FAQ database.
-- **Google Gemini & HuggingFace Instruct Embeddings:** Ensures high accuracy and robust language understanding.
-- **FAISS VectorStore:** Efficient and scalable vector search on your document embeddings.
-- **Streamlit Web App:** Simple, elegant, interactive web interface.
-- **Secure API Key Management:** API keys loaded from environment variables or `.env` file.
+- **FAQ RAG:** Answers from your CSV using retrieval + LLM.
+- **Google Gemini & HuggingFace Instruct Embeddings**
+- **FAISS** vector store for fast similarity search.
+- **Streamlit** web UI; API key from `.env`.
 
 ---
 
-## 🛠️ Installation
+## Installation
 
-### 1. Clone the Repository
 ```bash
 git clone <repo-url>
-cd questionproject/LLMs_question_answer_project
-```
-
-### 2. Install Dependencies
-```bash
+cd LLMs_question_answer_project
 pip install -r requirements.txt
 ```
 
-### 3. Set Up API Key
+### API key
 
-You need a Google Generative AI API key.
+Create a `.env` file in the project folder:
 
-- **Using `.env` file:**  
-  Create a file named `.env` in the project folder with:
-  ```
-  GOOGLE_API_KEY=your_google_gemini_api_key_here
-  ```
-  The script will automatically load this file.
+```
+GOOGLE_API_KEY=your_google_gemini_api_key_here
+```
 
-- **OR set environment variable manually:**  
-  ```bash
-  export GOOGLE_API_KEY=your_google_gemini_api_key_here
-  ```
+Or set the environment variable:
+
+```bash
+export GOOGLE_API_KEY=your_google_gemini_api_key_here
+```
 
 ---
 
-## 📁 Usage
+## Usage
 
-### 1. **Prepare FAQ Data:**
-- Place your FAQ CSV (e.g., `codebasics_faqs.csv`) in the project folder.
-- The CSV should contain at least a `prompt` column (questions) and a `response` column (answers).
+### 1. FAQ data
 
-### 2. **Build Vector Database**
+- Put your FAQ CSV (e.g. `codebasics_faqs.csv`) in the project folder.
+- It must have a `prompt` column (questions) and a `response` column (answers).
 
-Run (optional, only if you add/update the CSV):
+### 2. Build the vector index
+
+Run this **after adding or updating the CSV**:
+
 ```bash
-python main.py
+python main.py --build
 ```
-This creates or updates the FAISS vector store from your CSV.
 
-### 3. **Launch Web App**
+This creates the FAISS index in `faiss_index/`.
+
+### 3. Ask a question (CLI)
+
+```bash
+python main.py --query "Do you provide an internship?"
+```
+
+### 4. Web app
 
 ```bash
 streamlit run streamlit_webcode.py
 ```
-Open the provided local URL in your browser.
+
+- Use **Create / Rebuild Knowledge base** to rebuild the index from the CSV.
+- Type a question to get an answer; source passages are shown in an expander.
 
 ---
 
-## 📝 Example
+## Project layout
 
-- Enter your question in the input box.
-- The app provides the most contextually relevant answer based on your FAQ CSV.
-
----
-
-## 🗝️ Security Note
-
-- Your API key should **never** be hard-coded in scripts. Use environment variables or `.env`.
+- `src/config.py` – paths, model settings, env validation
+- `src/data.py` – load and validate FAQ CSV
+- `src/chain.py` – create vector DB and QA chain
+- `main.py` – CLI (`--build` or `--query`)
+- `streamlit_webcode.py` – Streamlit UI
 
 ---
 
-## 📚 Technologies Used
+## Development
+
+From the project root (with dependencies installed):
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest tests/ -v
+```
+
+## Security
+
+- Do **not** commit `.env` or put the API key in code. Use environment variables or `.env` only.
+
+---
+
+## Tech stack
 
 - [LangChain](https://python.langchain.com/)
 - [HuggingFace Embeddings](https://huggingface.co/)
-- [Google Gemini (Generative AI)](https://ai.google.dev/)
+- [Google Gemini](https://ai.google.dev/)
 - [FAISS](https://github.com/facebookresearch/faiss)
 - [Streamlit](https://streamlit.io/)
 - [python-dotenv](https://github.com/theskumar/python-dotenv)
 
 ---
 
-## 👨‍💻 Authors
+## Author
 
-- Developed by Hossein Zolfaghari
-- For educational and hands-on LLM projects
+Hossein Zolfaghari – educational LLM project.
 
----
+## License
 
-## 📄 License
-
-This project is for educational purposes.
+Educational use.

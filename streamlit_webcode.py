@@ -1,21 +1,4 @@
-import streamlit as st
-from main import create_vector_db, get_qa_chain
+"""Entry point for Streamlit. Run: streamlit run streamlit_webcode.py"""
+from src.app import main
 
-st.title('Zolfaghari QA website')
-btn = st.button('Create Knowledgebase')
-
-if btn:
-    pass
-question = st.text_input('Question: ')
-
-if question:
-    chain = get_qa_chain()
-    response = chain(question)
-
-    st.header("Answer: ")
-    st.write(response['result'])
-
-
-
-
-
+main()
