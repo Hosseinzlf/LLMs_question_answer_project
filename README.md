@@ -1,4 +1,4 @@
-# Zolfaghari QA Website
+# GenAI FAQ assistant platform for Education-Tech
 
 A context-aware Q&A app over your FAQ data using LangChain, HuggingFace embeddings, Google Gemini, FAISS, and Streamlit.
 
@@ -41,7 +41,7 @@ export GOOGLE_API_KEY=your_google_gemini_api_key_here
 
 ### 1. FAQ data
 
-- Put your FAQ CSV (e.g. `codebasics_faqs.csv`) in the project folder.
+- Put your FAQ CSV (e.g. `faqs.csv`) in the project folder.
 - It must have a `prompt` column (questions) and a `response` column (answers).
 
 ### 2. Build the vector index
@@ -74,10 +74,11 @@ streamlit run streamlit_webcode.py
 ## Project layout
 
 - `src/config.py` – paths, model settings, env validation
-- `src/data.py` – load and validate FAQ CSV
-- `src/chain.py` – create vector DB and QA chain
+- `src/data/` – load and validate FAQ CSV
+- `src/models/` – create vector DB and QA chain
+- `src/app/` – Streamlit UI
 - `main.py` – CLI (`--build` or `--query`)
-- `streamlit_webcode.py` – Streamlit UI
+- `streamlit_webcode.py` – Streamlit entry point
 
 ---
 
@@ -93,8 +94,6 @@ python -m pytest tests/ -v
 ## Security
 
 - Do **not** commit `.env` or put the API key in code. Use environment variables or `.env` only.
-
----
 
 ## Tech stack
 
