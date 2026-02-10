@@ -3,15 +3,14 @@ from pathlib import Path
 
 import pytest
 
-from src.config import PROJECT_ROOT
+from src.config import FAQ_CSV_PATH, PROJECT_ROOT
 from src.data import load_faq_documents
 
 
 def test_load_faq_documents_returns_list():
-    csv_path = PROJECT_ROOT / "codebasics_faqs.csv"
-    if not csv_path.exists():
-        pytest.skip("FAQ CSV not in project root")
-    docs = load_faq_documents(csv_path)
+    if not FAQ_CSV_PATH.exists():
+        pytest.skip("FAQ CSV not found (e.g. data/faqs.csv)")
+    docs = load_faq_documents(FAQ_CSV_PATH)
     assert isinstance(docs, list)
     assert len(docs) > 0
 

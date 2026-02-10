@@ -8,7 +8,8 @@ load_dotenv()
 
 # Paths (relative to project root)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-FAQ_CSV_PATH = PROJECT_ROOT / "faqs.csv"
+DATA_DIR = PROJECT_ROOT / "data"
+FAQ_CSV_PATH = DATA_DIR / "faqs.csv"
 FAISS_INDEX_DIR = PROJECT_ROOT / "faiss_index"
 
 # Data

@@ -10,9 +10,10 @@ def test_project_root_is_directory():
     assert PROJECT_ROOT.is_dir()
 
 
-def test_faq_csv_path_under_project_root():
+def test_faq_csv_path_under_data_dir():
     assert FAQ_CSV_PATH.relative_to(PROJECT_ROOT)
-    assert FAQ_CSV_PATH.name == "codebasics_faqs.csv"
+    assert "data" in FAQ_CSV_PATH.parts
+    assert FAQ_CSV_PATH.name == "faqs.csv"
 
 
 def test_faiss_index_dir_under_project_root():

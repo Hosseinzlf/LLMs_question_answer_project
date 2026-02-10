@@ -41,7 +41,7 @@ export GOOGLE_API_KEY=your_google_gemini_api_key_here
 
 ### 1. FAQ data
 
-- Put your FAQ CSV (e.g. `faqs.csv`) in the project folder.
+- Put your FAQ CSV in the `data/` folder (e.g. `data/faqs.csv`).
 - It must have a `prompt` column (questions) and a `response` column (answers).
 
 ### 2. Build the vector index
@@ -73,6 +73,7 @@ streamlit run streamlit_webcode.py
 
 ## Project layout
 
+- `data/` – FAQ CSV (e.g. `data/faqs.csv`)
 - `src/config.py` – paths, model settings, env validation
 - `src/data/` – load and validate FAQ CSV
 - `src/models/` – create vector DB and QA chain
