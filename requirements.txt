@@ -10,7 +10,7 @@ python-dotenv==1.0.0
 streamlit==1.22.0
 tiktoken>=0.7.0
 protobuf~=3.19.0
-pydantic
+pydantic 
 
 
 
