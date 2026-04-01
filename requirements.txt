@@ -4,7 +4,7 @@ langchain-community
 langchain-core
 langchain-google-genai
 langchain-huggingface
-faiss-cpu==1.8.0
+faiss-cpu==1.8.0 
 sentence-transformers
 python-dotenv==1.0.0
 streamlit==1.22.0
