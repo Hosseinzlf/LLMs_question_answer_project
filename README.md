@@ -1,6 +1,6 @@
 # GenAI FAQ assistant platform for Education-Tech
 
-A context-aware Q&A app  over your FAQ data using LangChain, HuggingFace embeddings, Google Gemini, FAISS, and Streamlit.
+A context-aware Q&A app over your FAQ data using LangChain, HuggingFace embeddings, Google Gemini, FAISS, and Streamlit.
  
 ---
 
